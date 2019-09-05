@@ -1,0 +1,59 @@
+import sys
+def reverse(s):
+  return s[::-1]
+
+def int2binary(x):
+    y = x
+    if y == 0:
+        print("0")
+        return 0
+    string2 = ""
+
+    while y >= 1:
+        if y % 2 == 0:
+            string2 = string2 + "0"
+            y = y/2
+        else:
+            string2 = string2 + "1"
+            y = y/2
+            y = y-0.5
+    string2 = reverse(string2)
+    print(string2)
+
+int2binary(7)
+int2binary(378)
+
+
+def parseMessage(inputString):
+
+    listS = inputString.split("\r\n")
+    return listS
+
+
+def test():
+    requested_resource = "GET"
+    clients_browser = "User-Agent:"
+    language = "Accept-Language:"
+    string1 = 'GET /index.html\r\nHTTP/1.1\r\nHost: www-net.cs.umass.edu\r\nUser-Agent: Firefox\r\nAccept: text/html,application/xhtml+xml\r\nAccept-Language: en-us\r\nAccept-Charset: ISO-8859-1,utf-8;q=0.7\r\nKeep-Alive: 115\r\nConnection: keep-alive\r\n'
+    print(string1)
+    string1 = parseMessage(string1)
+
+    list_counter = 0
+    for version in string1:
+        list_counter += 1
+        keyword = ''
+        if 'GET' in version:
+            target_index = version.index('GET')
+            print(version[target_index+len('GET'):])
+        print(list_counter, " ", version)
+
+
+
+    #function_output = parseMessage(string1)
+    # Here you will print:
+    # the requested_resource,
+    # the client’s_browser
+    # the HTTP version
+    # the language
+
+test()
